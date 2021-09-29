@@ -1,0 +1,11 @@
+.header {
+    text-align: center;
+    background: rgb(15,125,210);
+    background: linear-gradient(90deg, rgba(15,125,210,1) 47%, rgba(9,54,79,1) 100%, rgba(0,212,255,1) 100%);
+}
+.header h1 {
+    color: white;
+
+}
+.history {
+}
