@@ -12,17 +12,23 @@
     <header class="header">
         <h1>Weather Dashoard</h1>
     </header>
-    <main class="flex-column">
-        <div class="col-3">
-            <form id="user-form" class="card-body">
-                <label class="form-label" for="city">Search for a City:</label>
-                <textarea rows="2" id="city" placeholder="City" class="col-12 form-control"></textarea>
-                <button type="submit" id="submit" class="btn btn-info">Submit</button>
-            </form>
+    <main class="flex-row justify-space-between">
+        <div class="col-12 col-md-3">
+            <div class="card">
+                <form id="user-form" class="card-body">
+                    <label class="form-label" for="city">Search for a City:</label>
+                    <textarea rows="2" id="city" placeholder="City" class="col-12 form-control"></textarea>
+                    <button type="submit" id="submit" class="btn btn-info">Submit</button>
+                </form>
+            </div>
             <div id="history" class="history"></div>
         </div>
-        <div class="col-9">
-
+        <div class="col-12 col-md-9">
+            <div class="card">
+                <div class="row">
+                    <h3>5-Day Forecast</h3>
+                </div>
+            </div>
         </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
