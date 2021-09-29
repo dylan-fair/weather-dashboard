@@ -13,7 +13,7 @@ let historyBuilder = function(event){
     getWeatherData(search);
 }
 let getWeatherData = function(city){
-    let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q={"+ city + "}&appid={61e05e48054a2c829719753e2dc4717b}";
+    let apiUrl = "https://api.openweathermap.org/data/2.5/onecall?q={"+ city + "}&appid={a597667446d195fe657947f1689b480}";
     fetch(apiUrl)
         .then(function(response){
             if(response.ok){
