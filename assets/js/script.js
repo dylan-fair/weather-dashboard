@@ -15,7 +15,6 @@ let historyBuilder = function(event){
     save.setAttribute("id", "city-btn");
     save.setAttribute("data-name", search.replaceAll(" ", "-"));
     saveEl.appendChild(save);
-    historyHandler();
     getWeatherData(search);
 }
 let getWeatherData = function(city){
