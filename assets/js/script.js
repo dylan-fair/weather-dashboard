@@ -28,7 +28,7 @@ let getWeatherData = function(city){
                     getOtherInfo(data).then(function(data){
                         console.log(data);
                         data2 = data;
-                        buildCurrentweather(first, data2);
+                        buildCurrentweather(first, data2, city);
                         build5Day(data2);
                     })
                 })
@@ -54,7 +54,7 @@ let getOtherInfo = function(data){
                 alert("Unable to connect to Weather" + error);
             })
 }
-let buildCurrentweather = function(data, data2){
+let buildCurrentweather = function(data, data2, name2){
     let title = document.createElement("h2");
     let infoTemp = document.createElement("p");
     let infoWind = document.createElement("p")
@@ -62,7 +62,7 @@ let buildCurrentweather = function(data, data2){
     let infoUv = document.createElement("p");
     let icon = document.createElement("img");
     let date = moment().format('L');
-    let name = cityName.value;
+    let name = name2;
     title.textContent = name + " (" + date + ")" ;
     icon.setAttribute("src", `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`)
     title.appendChild(icon);
@@ -124,19 +124,14 @@ let build5Day = function(data){
         days.appendChild(holder);
     }
 }
-let historyHander = function(){
-    let buttons = saveEl.getElementsByTagName("button");
-    var name;
-    for(let i = 0; i < buttons.length; i++){
-        buttons[i].onclick = function(){
-            name = this.id;
-            console.log(name);
-        }
-    }
+let historyHander = function(e){
+    console.log(e.target);
+    var name = e.target.id;
     console.log(name);
     name = name.replaceAll("-", " ")
     currentWeather.innerHTML = "";
     days.innerHTML = "";
+    console.log(name);
     getWeatherData(name);
 }
 saveEl.addEventListener("click", historyHander);
