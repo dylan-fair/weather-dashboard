@@ -11,9 +11,11 @@ let historyBuilder = function(event){
     let search = cityName.value;
     let save = document.createElement("button");
     save.textContent = search;
-    save.classList = "list-item row";
-    save.setAttribute("id", search);
+    save.style = { display: "grid", placeItems: "center" };
+    save.setAttribute("id", "city-btn");
+    save.setAttribute("data-name", search.replaceAll(" ", "-"));
     saveEl.appendChild(save);
+    historyHandler();
     getWeatherData(search);
 }
 let getWeatherData = function(city){
@@ -77,8 +79,20 @@ let buildCurrentweather = function(data, data2){
     let humid = data.main.humidity;
     infoHumid.textContent = "Humidity: " + humid + " %";
     currentWeather.appendChild(infoHumid);
-    let uv = data2.daily[0].uvi;
-    infoUv.textContent = "UV Index: " + uv;
+    let uv = data2.current.uvi;
+    let span = document.createElement("span");
+    span.textContent = uv;
+    infoUv.textContent = "UV Index: ";
+    if(uv < 3){
+        span.classList = "bg-success  ";
+    } else if (uv < 6){
+        span.classList = "bg-secondary  ";
+    } else if (uv < 8){
+        span.classList = "bg-warning  ";
+    } else {
+        span.classList = "bg-warning  ";
+    }
+    infoUv.appendChild(span);
     currentWeather.appendChild(infoUv);
 
 }
@@ -90,7 +104,7 @@ let build5Day = function(data){
     days.appendChild(header);
     for(let i = 1; i < 6; i++){
         let container = document.createElement("div");
-        container.classList = "col"
+        container.classList = "col bg-info"
         let date = moment().add(i, "days");
         date = date.format("L");
         let title = document.createElement("h4");
