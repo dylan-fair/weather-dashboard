@@ -11,7 +11,7 @@ let historyBuilder = function(event){
     let search = cityName.value;
     let save = document.createElement("button");
     save.textContent = search;
-    save.classList = "list-item row justify-space-between align-center";
+    save.classList = "list-item row";
     save.setAttribute("id", search);
     saveEl.appendChild(save);
     getWeatherData(search);
