@@ -12,8 +12,7 @@ let historyBuilder = function(event){
     let save = document.createElement("button");
     save.textContent = search;
     save.style = { display: "grid", placeItems: "center" };
-    save.setAttribute("id", "city-btn");
-    save.setAttribute("data-name", search.replaceAll(" ", "-"));
+    save.setAttribute("id", search.replaceAll(" ", "-"));
     saveEl.appendChild(save);
     getWeatherData(search);
 }
@@ -125,4 +124,20 @@ let build5Day = function(data){
         days.appendChild(holder);
     }
 }
+let historyHander = function(){
+    let buttons = saveEl.getElementsByTagName("button");
+    var name;
+    for(let i = 0; i < buttons.length; i++){
+        buttons[i].onclick = function(){
+            name = this.id;
+            console.log(name);
+        }
+    }
+    console.log(name);
+    name = name.replaceAll("-", " ")
+    currentWeather.innerHTML = "";
+    days.innerHTML = "";
+    getWeatherData(name);
+}
+saveEl.addEventListener("click", historyHander);
 historyEl.addEventListener("submit", historyBuilder);
