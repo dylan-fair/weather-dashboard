@@ -10,3 +10,7 @@
 .row {
     border: 3px black;
 }
+.history {
+    display: flex;
+    justify-content: center;
+}
